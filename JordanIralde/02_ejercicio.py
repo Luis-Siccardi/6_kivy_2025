@@ -1,25 +1,39 @@
 from kivy.app import App
-from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.button import Button
-from kivy.uix.label import Label
+from kivy.lang import Builder
+from kivy.uix.screenmanager import ScreenManager, Screen
 
-class MyBoxLayout(BoxLayout):
-    def __init__(self, **kwargs):
-        super(MyBoxLayout, self).__init__(**kwargs)
-        self.orientation = 'vertical'
-        self.label = Label(text='Texto original')
-        self.button = Button(text='Cambiar texto')
-        self.button.bind(on_press=self.change_text)
-        
-        self.add_widget(self.label)
-        self.add_widget(self.button)
-    
-    def change_text(self, instance):
-        self.label.text = 'Texto cambiado'
+Builder.load_string("""
+<PaginaUno>:
+    BoxLayout:
+        Button:
+            text: 'Pagina 1'
+        Button:
+            text: 'IR A PAGINA 2'
+            on_press: root.manager.current = 'dos'
+
+<PaginaDos>:
+    BoxLayout:
+        Button:
+            text: 'Pagina 2'
+        Button:
+            text: 'IR A PAGINA 1'
+            on_press: root.manager.current = 'uno'
+""")
+
+class PaginaUno(Screen):
+    pass
+
+class PaginaDos(Screen):
+    pass
 
 class TestApp(App):
     def build(self):
-        return MyBoxLayout()        
+        # Create the screen manager
+        sm = ScreenManager()
+        sm.add_widget(PaginaUno(name='uno'))
+        sm.add_widget(PaginaDos(name='dos'))
+
+        return sm
 
 if __name__ == '__main__':
     TestApp().run()
