@@ -1,42 +1,23 @@
-from kivy.app import App
+KV = '''
+MDScreen:
+    md_bg_color: self.theme_cls.backgroundColor
+
+    MDLabel:
+        text: "Hello, World!"
+        halign: "center"
+'''
+
 from kivy.lang import Builder
-from kivy.uix.screenmanager import ScreenManager, Screen
 
-Builder.load_string("""
-<MenuScreen>:
-    BoxLayout:
-        Button:
-            text: 'Goto settings'
-            on_press: root.manager.current = 'settings'
-        Button:
-            text: 'Quit'
-            on_press: exit()
+from kivymd.app import MDApp
 
-<SettingsScreen>:
-    BoxLayout:
-        Button:
-            text: 'My settings button'
-        Button:
-            text: 'Back to menu'
-            on_press: root.manager.current = 'menu'
-""")
 
-# Declare both screens
-class MenuScreen(Screen):
-    pass
-
-class SettingsScreen(Screen):
-    pass
-
-class TestApp(App):
-
+class MainApp(MDApp):
     def build(self):
-        # Create the screen manager
-        sm = ScreenManager()
-        sm.add_widget(MenuScreen(name='menu'))
-        sm.add_widget(SettingsScreen(name='settings'))
+        return Builder.load_string(KV)
 
-        return sm
+    def on_start(self):
+        self.fps_monitor_start()
 
-if __name__ == '__main__':
-    TestApp().run()
+
+MainApp().run()
