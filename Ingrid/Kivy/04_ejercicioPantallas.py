@@ -6,25 +6,25 @@ ScreenManager:
     id: screen_manager
     
     MDScreen:
-    name: "pantalla1"
-    MDLabel:
-        text: "Pantalla 1"
-        halign: "center"
-    MDFlatButton:
-        text: "ir a pantalla 2"
-        pos_hint: {"center_x": 0.5, "center_y": 0.4}
-        on_release: app.change_screen(pantalla2)
+        name: "pantalla1"
+        MDLabel:
+            text: "Pantalla 1"
+            halign: "center"
+        MDFlatButton:
+            text: "ir a pantalla 2"
+            pos_hint: {"center_x": 0.5, "center_y": 0.4}
+            on_release: app.change_screen("pantalla2")
         
     MDScreen:
-    name: "pantalla2"
-    MDLabel:
-        text: "Pantalla 2"
-        halign: "center"
-    MDFlatButton:
-        text: "Volver a pantalla 1"
-        pos_hint: {"center_x": 0.5, "center_y": 0.4}
-        on_release: app.change_screen(pantalla1)
-    '''
+        name: "pantalla2"
+        MDLabel:
+            text: "Pantalla 2"
+            halign: "center"
+        MDFlatButton:
+            text: "Volver a pantalla 1"
+            pos_hint: {"center_x": 0.5, "center_y": 0.4}
+            on_release: app.change_screen("pantalla1")
+'''
 
 class MyApp(MDApp):
     def build(self):
