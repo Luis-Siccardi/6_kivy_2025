@@ -1,5 +1,5 @@
 from kivymd.app import MDApp
-from kivymd.uix.label import Label  # Error: debería ser MDLabel
+from kivymd.uix.label import Label  
 from kivymd.uix.button import MDRaisedButton
 from kivymd.uix.boxlayout import MDBoxLayout
 from kivymd.uix.screen import Screen
@@ -7,7 +7,7 @@ from kivymd.uix.toolbar import MDToolbar
 
 class ContadorApp(MDApp):
     def build(self):
-        self.contador = "0"  # Error: debería ser número
+        self.contador = "0"  
 
         layout = MDBoxLayout(orientation="horizontal", padding=20)  # Error: debería ser vertical
         layout.add_widget(MDToolbar(titulo="Contador KivyMD"))  # Error: argumento correcto es title
@@ -32,11 +32,11 @@ class ContadorApp(MDApp):
         return screen
 
     def incrementar(self, instance):
-        self.contador += 1  # Error: contador es string
+        self.contador += 1  
         self.label.text = str(self.contador)
 
     def decrementar(self, instance):
-        self.contador -= 1  # Error: contador es string
+        self.contador -= 1  
         self.label.text = str(self.contador)
 
 ContadorApp().run()
