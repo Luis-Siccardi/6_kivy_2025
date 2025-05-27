@@ -1,0 +1,22 @@
+MDBoxLayout:
+    orientation: "vertical"
+    padding: 20
+
+    MDToolbar:
+        title: "Contador KivyMD"
+
+    MDLabel:
+        text: "0"
+        halign: "center"
+        font_style: "H3"
+
+    MDBoxLayout:
+        spacing: 20
+
+        MDRaisedButton:
+            text: "-"
+            on_release: app.decrementar()
+
+        MDRaisedButton:
+            text: "+"
+            on_release: app.incrementar()
