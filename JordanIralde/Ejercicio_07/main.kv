@@ -1,0 +1,56 @@
+#:kivy 2.1.0
+#:import dp kivy.metrics.dp  
+
+ScreenManager:
+    manager: sm
+    id: sm
+
+    Screen:
+        name: "HomeScreen"
+        BoxLayout:
+            orientation: "vertical"
+            spacing: dp(20)
+            padding: dp(40)
+
+            BoxLayout:
+                size_hint_y: None
+                height: dp(50)
+                spacing: dp(10)
+                Button:
+                    text: 'Ir a Settings'
+                    on_press: app.go_to_settings()
+
+            MDTextField:
+                id: user_field
+                hint_text: "Usuario"
+                helper_text: "Ingresa tu usuario"
+                helper_text_mode: "on_focus"
+                required: True
+                icon_right: "account"
+
+            MDTextField:
+                id: pass_field
+                hint_text: "Contraseña"
+                helper_text: "Ingresa tu contraseña"
+                helper_text_mode: "on_focus"
+                password: True
+                required: True
+                icon_right: "eye-off"
+
+            MDRaisedButton:
+                text: "Iniciar sesión"
+                pos_hint: {"center_x": .5}
+                on_press: app.validate_login()
+
+    Screen:
+        name: "SettingsScreen"
+        BoxLayout:
+            orientation: "vertical"
+            spacing: dp(20)
+            padding: dp(40)
+
+            Label:
+                text: "Se encuentra en configuraciones"
+            Button:
+                text: "Volver"
+                on_press: root.manager.current = "HomeScreen"
