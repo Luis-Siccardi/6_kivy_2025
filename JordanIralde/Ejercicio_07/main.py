@@ -1,8 +1,12 @@
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivymd.app import MDApp
-from kivymd.uix.snackbar import Snackbar
+from kivymd.uix.snackbar.snackbar import (
+    MDSnackbar,
+    MD
+)
 
+from kivy.metrics import dp
 
 class LoginApp(MDApp):
     def build(self):
@@ -15,16 +19,12 @@ class LoginApp(MDApp):
         self.root.current = "HomeScreen"
 
     def validate_login(self):
-        # Obtiene el texto ingresado en los campos, sin espacios extra al inicio/final
-        user = self.root.ids.user_field.text.strip()
-        pwd  = self.root.ids.pass_field.text.strip()
+        MDSnackbar(
+            ,
+            y=dp(24),
+            pos_hint={"center_x": 0.5},
+            size_hint_x=0.5,
+        ).open()
 
-        # Verifica que ambos campos no estén vacíos
-        if user and pwd:
-            Snackbar(text="✅ Login exitoso").open()
-
-        else:
-            # Muestra un snackbar advirtiendo que complete los campos
-            Snackbar(text="⚠️ Completa todos los campos").open()
 
 LoginApp().run()
