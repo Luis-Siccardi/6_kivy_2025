@@ -1,0 +1,45 @@
+ScreenManager:
+    id: sm
+    HomeScreen:
+    SettingsScreen:
+
+<HomeScreen@Screen>:
+    name: "HomeScreen"
+    BoxLayout:
+        orientation: "vertical"
+        spacing: dp(20)
+        padding: dp(40)
+
+        BoxLayout:
+            size_hint_y: None
+            height: dp(50)
+            spacing: dp(10)
+            Button:
+                text: 'Ir a Settings'
+                on_press: app.go_to_settings()
+
+        MDTextField:
+            id: text_input1
+
+
+        MDTextField:
+            id: text_input2
+ 
+
+        MDButton:
+            text: "Iniciar sesión"
+            pos_hint: {"center_x": .5}
+            on_press: app.validate_login()
+
+<SettingsScreen@Screen>:
+    name: "SettingsScreen"
+    BoxLayout:
+        orientation: "vertical"
+        spacing: dp(20)
+        padding: dp(40)
+
+        Label:
+            text: "Se encuentra en configuraciones"
+        Button:
+            text: "Volver"
+            on_press: app.go_to_home()
