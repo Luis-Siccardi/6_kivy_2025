@@ -1,0 +1,105 @@
+MDNavigationLayout:
+
+    ScreenManager:
+        id: screen_manager
+
+        MDScreen:
+            name: "inicio"
+
+            BoxLayout:
+                orientation: "vertical"
+
+                MDToolbar:
+                    title: "Inicio"
+                    elevation: 10
+                    left_action_items: [["menu", lambda x: nav_drawer.set_state("toggle")]]
+
+                MDLabel:
+                    text: "Bienvenido a la app"
+                    halign: "center"
+                    font_style: "H4"
+
+                MDLabel:
+                    text: "Esta es una aplicación de ejemplo con navegación"
+                    halign: "center"
+
+        MDScreen:
+            name: "perfil"
+
+            BoxLayout:
+                orientation: "vertical"
+
+                MDToolbar:
+                    title: "Perfil"
+                    elevation: 10
+                    left_action_items: [["menu", lambda x: nav_drawer.set_state("toggle")]]
+
+                MDCard:
+                    orientation: 'vertical'
+                    padding: "24dp"
+                    size_hint: None, None
+                    size: "280dp", "180dp"
+                    pos_hint: {"center_x": 0.5}
+
+                    MDLabel:
+                        text: "Nombre: Jordan"
+                        theme_text_color: "Primary"
+                    MDLabel:
+                        text: "Email: jordan@ejemplo.com"
+                        theme_text_color: "Secondary"
+
+                MDFloatingActionButton:
+                    icon: "account-edit"
+                    pos_hint: {"center_x": 0.5}
+                    on_release: app.mostrar_dialogo()
+
+        MDScreen:
+            name: "config"
+
+            BoxLayout:
+                orientation: "vertical"
+
+                MDToolbar:
+                    title: "Configuración"
+                    elevation: 10
+                    left_action_items: [["menu", lambda x: nav_drawer.set_state("toggle")]]
+
+                MDLabel:
+                    text: "Opciones de Configuración"
+                    halign: "center"
+                    font_style: "H5"
+
+    MDNavigationDrawer:
+        id: nav_drawer
+
+        MDBoxLayout:
+            orientation: "vertical"
+            spacing: "8dp"
+            padding: "8dp"
+
+            MDLabel:
+                text: "Menú"
+                font_style: "H6"
+                size_hint_y: None
+                height: self.texture_size[1]
+
+            MDNavigationDrawerItem:
+                text: "Inicio"
+                icon: "home"
+                on_release:
+                    screen_manager.current = "inicio"
+                    nav_drawer.set_state("close")
+
+            MDNavigationDrawerItem:
+                text: "Perfil"
+                icon: "account"
+                on_release:
+                    screen_manager.current = "perfil"
+                    nav_drawer.set_state("close")
+
+            MDNavigationDrawerItem:
+                text: "Configuración"
+                icon: "cog"
+                on_release:
+                    screen_manager.current = "config"
+                    nav_drawer.set_state("close")

@@ -19,12 +19,12 @@ class TestApp(MDApp):
     def mostrar_snackbar(self):
         snackbar = MDSnackbar(
             MDLabel(
-                text="¡Hola! Este es un Snackbar personalizado.",
-                theme_text_color="Custom",
-                text_color=(1, 1, 1, 1),
-                halign="center",
-                size_hint_y=50,\
-            ),
+            text="¡Hola! Este es un Snackbar personalizado.",
+            theme_text_color="Custom",
+            text_color=(1, 1, 1, 1),
+            halign="center",
+            valign="middle",
+        ),
             duration=5,
             orientation='vertical',
             background_color=(0.1, 0.6, 0.9, 1),

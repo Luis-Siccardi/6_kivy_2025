@@ -19,23 +19,14 @@ ScreenManager:
                 on_press: app.go_to_settings()
 
         MDTextField:
-            id: user_field
-            hint_text: "Usuario"
-            helper_text: "Ingresa tu usuario"
-            helper_text_mode: "on_focus"
-            required: True
-            icon_right: "account"
+            id: text_input1
+
 
         MDTextField:
-            id: pass_field
-            hint_text: "Contraseña"
-            helper_text: "Ingresa tu contraseña"
-            helper_text_mode: "on_focus"
-            password: True
-            required: True
-            icon_right: "eye-off"
+            id: text_input2
+ 
 
-        MDRaisedButton:
+        MDButton:
             text: "Iniciar sesión"
             pos_hint: {"center_x": .5}
             on_press: app.validate_login()
